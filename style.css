@@ -1,6 +1,29 @@
 :root {
+  /* Fonts */
+  --font-family: "Chango", display, sans-serif;
+
+  --fluid-font-size-xxl: clamp(3rem, 10cqi + 0.5rem, 6rem);
+  --fluid-font-size-xl: clamp(2rem, 8cqi + 0.5rem, 4rem);
+  --fluid-font-size-l: clamp(1.5rem, 6cqi + 0.5rem, 3rem);
+  --fluid-font-size-m: clamp(1rem, 4cqi + 0.5rem, 2rem);
+  --fluid-font-size-s: clamp(0.7rem, 2cqi + 0.5rem, 1rem);
+
+  --font-weight-fine: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Colors */
+  --puppy-dog-fur-400: oklch(0.5857 0.1113 59.03);
+  --puppy-dog-fur-200: oklch(0.7983 0.0911 40.51);
+  --puppy-dog-eyes: oklch(0.1588 0.0168 357.5);
+  --puppy-dog-nose: oklch(0.1883 0.024 19.55);
+
+  --clr-background: var(--puppy-dog-fur-200);
+  --clr-bg-banner: var(--puppy-dog-fur-400);
+
   /* Spacing */
   --spacing: 0.25rem;
+  --border-radius: 1rem;
 }
 /* ==========================================
  *  Basic reset & typography
@@ -43,6 +66,17 @@ ul {
   list-style: none;
 }
 
+/* ======================================================================
+ * Global/base styles 
+ * ======================================================================
+ */
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--clr-background);
+  color: var(--puppy-dog-eyes);
+}
+
 h1,
 h2,
 h3,
@@ -53,14 +87,34 @@ h6 {
   line-height: 1.1;
 }
 
+h1 {
+  font-size: var(--fluid-font-size-xxl);
+  color: var(--clr-accent);
+}
+
 p {
   text-wrap: pretty;
 }
 
-/* ======================================================================
- * Global/base styles 
- * ======================================================================
- */
+.icon {
+  background-color: oklch(0 0 0 / 0);
+}
+
+button,
+input {
+  &:hover {
+    background-color: var(--bg-icon-button-hover);
+    color: contrast-color(var(--bg-icon-button-hover));
+  }
+}
+
+button,
+input {
+  &:focus-visible {
+    background-color: var(--bg-icon-button-hover);
+    color: contrast-color(var(--bg-icon-button-hover));
+  }
+}
 
 /* ======================================================================
  * COMPOSITION
@@ -115,6 +169,50 @@ p {
  * BLOCKS
  * ======================================================================
  */
+.banner {
+  background-color: var(--clr-bg-banner);
+  color: var(--puppy-dog-nose);
+  padding-block: calc(4 * var(--spacing));
+}
+
+.main {
+  margin-block: calc(8 * var(--spacing));
+  grid-template-columns: 1fr 6fr 1fr;
+
+  .button {
+    font-size: var(--fluid-font-size-l);
+    padding-block: calc(4 * var(--spacing));
+    padding-inline: calc(8 * var(--spacing));
+    margin-inline: auto;
+    border-radius: 1rem;
+  }
+
+  .message {
+    block-size: calc(2 * var(--fluid-font-size-s));
+    font-size: var(--fluid-font-size-s);
+    text-align: center;
+  }
+
+  .error-message {
+    block-size: calc(2 * var(--fluid-font-size-xl));
+    font-size: var(--fluid-font-size-xl);
+  }
+
+  img {
+    margin-inline: auto;
+    border-radius: 1rem;
+  }
+
+  .inline-border {
+    margin-block: auto;
+    writing-mode: vertical-rl;
+    font-size: var(--fluid-font-size-xxl);
+    text-align: center;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+}
 
 /* ======================================================================
  * EXCEPTIONS

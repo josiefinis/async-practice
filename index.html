@@ -5,17 +5,32 @@
     <title>Good dogs</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=chango:400"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./dist/main.js"></script>
   </head>
 
   <body>
-    <header></header>
-    <main class="flow margin-inline">
-      <h1>Good dogs</h1>
-      <button id="get-dog-button" type="button" class="button">Fetch!</button>
-      <img id="good-dog-image" />
+    <header class="banner | padding-inline">
+      <h1 class="main-heading">Good dogs</h1>
+    </header>
+    <main class="main | grid margin-inline">
+      <span class="inline-border"
+        >&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;</span
+      >
+      <span class="stack">
+        <button id="get-dog-button" type="button" class="button">Fetch!</button>
+        <p id="status" class="message"></p>
+        <img id="good-dog-image" />
+      </span>
+      <span class="inline-border"
+        >&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;&#x1F9B4;</span
+      >
     </main>
-    <footer></footer>
+    <footer class="footer"></footer>
   </body>
 </html>
