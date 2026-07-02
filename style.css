@@ -207,7 +207,6 @@ input {
     margin-block: auto;
     writing-mode: vertical-rl;
     font-size: var(--fluid-font-size-xxl);
-    text-align: center;
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: clip;

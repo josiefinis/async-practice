@@ -17,6 +17,14 @@ const app: Dom = {
   image: document.getElementById("good-dog-image") as HTMLImageElement,
 };
 
+const getBreed = (url: string): string => {
+  const regex = /breeds\/([a-z]+)-?([a-z]+)?\//;
+  const result = url.match(regex);
+  const breed = result ? (result[1] ?? "dog") : "dog";
+  const modifier = result ? (result[2] ?? "") : "";
+  return `${modifier} ${breed}`;
+};
+
 const handleError = (error: Error | unknown) => {
   if (error instanceof Error) {
     app.status.textContent = `LOST \u{1F415} ${error.message}`;
@@ -36,7 +44,7 @@ const getGoodDog = async (): Promise<void> => {
     }
     const goodDog: ResponseData = (await response.json()) as ResponseData;
     app.image.src = goodDog.message;
-    app.status.textContent = "";
+    app.status.textContent = `good ${getBreed(goodDog.message)}!`;
   } catch (error) {
     handleError(error);
   }
