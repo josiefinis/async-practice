@@ -1,0 +1,122 @@
+:root {
+  /* Spacing */
+  --spacing: 0.25rem;
+}
+/* ==========================================
+ *  Basic reset & typography
+ * ========================================== 
+ */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  font: inherit;
+}
+
+/* Remove default margin */
+*:not(dialog) {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  line-height: 1.1;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ======================================================================
+ * Global/base styles 
+ * ======================================================================
+ */
+
+/* ======================================================================
+ * COMPOSITION
+ * ======================================================================
+ */
+
+.container {
+  container-type: inline-size;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--min-column-inline-size, 16rem), 1fr)
+  );
+  gap: var(--grid-gap, 1rem);
+}
+
+.flex {
+  display: flex;
+  gap: var(--flex-gap, 1rem);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--flex-gap, 1rem);
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.margin-inline {
+  margin-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.padding-inline {
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+/* ======================================================================
+ * UTILITIES
+ * ======================================================================
+ */
+
+/* ======================================================================
+ * BLOCKS
+ * ======================================================================
+ */
+
+/* ======================================================================
+ * EXCEPTIONS
+ * ======================================================================
+ */
