@@ -9,12 +9,14 @@ interface Dom {
   button: HTMLButtonElement;
   status: HTMLParagraphElement;
   image: HTMLImageElement;
+  caption: HTMLElement;
 }
 
 const app: Dom = {
   button: document.getElementById("get-dog-button") as HTMLButtonElement,
   status: document.getElementById("status") as HTMLParagraphElement,
   image: document.getElementById("good-dog-image") as HTMLImageElement,
+  caption: document.querySelector("figcaption") as HTMLElement,
 };
 
 const getBreed = (url: string): string => {
@@ -25,7 +27,7 @@ const getBreed = (url: string): string => {
   return `${modifier} ${breed}`;
 };
 
-const handleError = (error: Error | unknown) => {
+const handleError = (error: unknown) => {
   if (error instanceof Error) {
     app.status.textContent = `LOST \u{1F415} ${error.message}`;
     app.status.classList.add("error-message");
@@ -36,6 +38,7 @@ const handleError = (error: Error | unknown) => {
 
 const getGoodDog = async (): Promise<void> => {
   app.status.textContent = "Loading...";
+  app.caption.textContent = "";
   app.status.classList.remove("error-message");
   try {
     const response: Response = await fetch(API_URL);
@@ -44,7 +47,8 @@ const getGoodDog = async (): Promise<void> => {
     }
     const goodDog: ResponseData = (await response.json()) as ResponseData;
     app.image.src = goodDog.message;
-    app.status.textContent = `good ${getBreed(goodDog.message)}!`;
+    app.status.textContent = "";
+    app.caption.textContent = `good ${getBreed(goodDog.message)}!`;
   } catch (error) {
     handleError(error);
   }

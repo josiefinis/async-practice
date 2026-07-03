@@ -179,6 +179,10 @@ input {
   margin-block: calc(8 * var(--spacing));
   grid-template-columns: 1fr 6fr 1fr;
 
+  .stack {
+    align-items: center;
+  }
+
   .button {
     font-size: var(--fluid-font-size-l);
     padding-block: calc(4 * var(--spacing));
@@ -194,8 +198,9 @@ input {
   }
 
   .error-message {
-    block-size: calc(2 * var(--fluid-font-size-xl));
+    flex: auto;
     font-size: var(--fluid-font-size-xl);
+    inline-size: min-content;
   }
 
   img {
@@ -203,10 +208,16 @@ input {
     border-radius: 1rem;
   }
 
+  .caption {
+    block-size: calc(2 * var(--fluid-font-size-s));
+    font-size: var(--fluid-font-size-s);
+    text-align: center;
+  }
+
   .inline-border {
     margin-block: auto;
     writing-mode: vertical-rl;
-    font-size: var(--fluid-font-size-xxl);
+    font-size: var(--fluid-font-size-l);
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: clip;

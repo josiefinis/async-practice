@@ -3,6 +3,7 @@ const app = {
     button: document.getElementById("get-dog-button"),
     status: document.getElementById("status"),
     image: document.getElementById("good-dog-image"),
+    caption: document.querySelector("figcaption"),
 };
 const getBreed = (url) => {
     const regex = /breeds\/([a-z]+)-?([a-z]+)?\//;
@@ -22,6 +23,7 @@ const handleError = (error) => {
 };
 const getGoodDog = async () => {
     app.status.textContent = "Loading...";
+    app.caption.textContent = "";
     app.status.classList.remove("error-message");
     try {
         const response = await fetch(API_URL);
@@ -30,7 +32,8 @@ const getGoodDog = async () => {
         }
         const goodDog = (await response.json());
         app.image.src = goodDog.message;
-        app.status.textContent = `good ${getBreed(goodDog.message)}!`;
+        app.status.textContent = "";
+        app.caption.textContent = `good ${getBreed(goodDog.message)}!`;
     }
     catch (error) {
         handleError(error);
